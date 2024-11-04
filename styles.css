@@ -15,32 +15,37 @@ body {
 header {
     text-align: center;
     padding: 20px;
-    border-bottom: 2px solid #00ff00; /* Green border */
+    border-bottom: 2px solid #00ff00;
+}
+
+.divider {
+    color: #00ff00; 
+    border-bottom: 1px dashed #00ff00; 
 }
 
 h1 {
     font-size: 2.5em;
-    color: #00ff00; /* Green text */
+    color: #00ff00;
 }
 
 h2 {
-    color: #00ff00; /* Green text */
+    color: #00ff00; 
 }
 
 h3 {
-    color: #00ff00; /* Green text */
-    border-bottom: 1px solid #00ff00; /* Green underline */
+    color: #00ff00; 
+    border-bottom: 1px solid #00ff00; 
 }
 
 h4 {
-    color: white; /* White for job titles */
+    color: white; 
 }
 
 section {
     padding: 20px;
     margin: 10px 0;
-    background-color: rgba(0, 0, 0, 0.8); /* Slightly transparent black */
-    border: 1px solid #00ff00; /* Green border */
+    background-color: rgba(0, 0, 0, 0.8);
+    border: 1px solid #00ff00; 
     border-radius: 5px;
 }
 
@@ -56,5 +61,5 @@ li {
 footer {
     text-align: center;
     padding: 10px;
-    border-top: 2px solid #00ff00; /* Green border */
+    border-top: 2px solid #00ff00; 
 }
