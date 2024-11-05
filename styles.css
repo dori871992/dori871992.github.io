@@ -18,6 +18,10 @@ header {
     border-bottom: 2px solid #00ff00;
 }
 
+header a {
+    color: steelblue
+}
+
 .divider {
     color: #00ff00; 
     border-bottom: 1px dashed #00ff00; 
