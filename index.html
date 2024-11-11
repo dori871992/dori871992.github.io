@@ -169,3 +169,75 @@
                 <p><b>Responsibilities:</b>Beginning of my career in SE worked in Android App development, developing apps with voip capabilities, geolocation tracking etc. Although android was limited at that time, learned and gained a lot in the profession. </p>
             </div>
         </section>
+        <section class="experience">
+            <h3>Education</h3>
+            <div class="job">
+                <h4>Faculty of Natural Sciences / Master’s Degree</h4>
+                <p>November 2015 - February 2017, (Tirana, AL)</p>
+                <p>Completed master’s studying process for 1,5 years in “Business Informatics”.</p>
+            </div>
+            <div class="divider"></div>
+            <div class="job">
+                <h4>Faculty of Natural Sciences / Bachelor’s Degree</h4>
+                <p>November 2010 - September 2015, (Tirana, AL)</p>
+                <p>*Completed 3 years of studying in Informatics, with some delays related to personal reasons.</p>
+            </div>
+        </section>
+        <section class="experience">
+            <h3>Some of the projects I worked on: </h3>
+            <div class="job">
+                <h4>Revenue cycle management platform</h4>
+                <p><b>Domain:</b> RCM, Healthcare, Finance</p>
+                <p>The project was about revenue cycle management and the main functionalities were around bill tracking and payments by healthcare providers.</br></br>
+                    Working as full stack I was responsible for implementing features working in the frontend (React, MUI, Vite, Zustand, Azure Saml, Jest) and backend
+                    (.Net Core microservices, Azure functions, Logic Apps, SQL Server, Cosmos DB, Azure Pipelines, Xunit, Moq). Backend services were implemented with the CQRS pattern in mind.
+                </p>
+            </div>
+            <div class="divider"></div>
+            <div class="job">
+                <h4>Delivery SAAS platform</h4>
+                <p><b>Domain:</b> Logictis, SAAS, Courier, Shipping </p>
+                <p>As fullstack I worked on frontend (React, Redux Saga, Auth0, Formik, Jest, React testing library, Suspense) building new features and enhancing existing ones.</br></br>
+                     All new implementations were accompanied by tests, with a coverage goal set at 80% (unit and ui tests). On the backend we had a pure microservices infrastructure with each .Net core microservice doing its job.
+                    Strongly sticked to Domain Driven Design (Domain events, Bounded context, one service one job) and CQRS. </br></br>The communication between services was done through integration events where Amazon SQS and SNS were used.
+                     We also integrated a tool called Intent Architect to create microservices templates so we could spin new microservices very fast. This delivery platform was serving big clients and served a huge traffic.
+                    Also Pagerduty was integrated to have realtime updates if one of the services went down.
+                </p>
+            </div>
+            <div class="divider"></div>
+            <div class="job">
+                <h4>Delivery tracking SAAS</h4>
+                <p><b>Domain:</b> Logictis, SAAS, Courier, Shipping, Live tracking </p>
+                <p>User places an order, a delivery tracking link is sent to them. When the user opens the link, it will show the driver in the map updating it's real time location every 5 secs.
+                    I had to work on this project and completed the frontend with NextJs and backend with .Net Core. </br>For realtime updates we used MongoDB as a nosql db.
+                    All the UI was implemented with Material UI and custom scss. On some of the backend services we introduced GraphQL via the HotChocolate framework.
+                </p>
+            </div>
+            <div class="divider"></div>
+            <div class="job">
+                <h4>Social Media Platform</h4>
+                <p><b>Domain:</b> Social Media, Digital Art, Chat, Communication </p>
+                <p>App was targeting digital artists that could upload their creations in the platform's store and sell them for a price.
+                    This was a startup I worked with and had to do all kinds of jobs. Being heavily focused on building Android and iOS apps with react native, I was also responsible for their deployment using Fastlane in combination with CircleCI. </br>I configured automated workflows to fetch ios certificates from Apple dev portal, sing app and deploy to App Store. For Android it was easier.
+                </br></br>I also had to work on a react admin dashboard where artists would login into the web app and manage their digital creations or add new ones.
+                    The complete infrastructure was serverless, meaning that we had to work with lambda functions on the backend. Mobile apps had AppSync integrated and the data manipulation was done through GraphQL. One of the major features I built for the application was end-to-end encryption and for that I used CryptoJS.
+                    The backend was updated through uploading Cloudformation templates which would spin new/updated lambdas. Users were managed though AWS Cognito.
+                </p>
+                </div>
+                <div class="divider"></div>
+            <div class="job">
+                <h4>Digital Menu Saas</h4>
+                <p><b>Domain:</b> Hospitality, Menu </p>
+                <p>
+                    This platform I built from scratch, from designing it with Figma and Canvas to building the frontend application with NextJS (MUI, Auth0).
+                    In the backend I worked with .Net core. Platform was providing beach resorts and businesses a way to show a digital menu in their beach umbrellas and sunbeds through unique QR codes (specific to the umbrella nr).
+                    The reason for unique QR codes was because clients had the possibility to order from the umbrella directly without needing to call a waiter/staff.</br></br>
+                    The staff gets these orders in two channels, as a well formatted WhatsApp message (integrated WhatsApp cloud api) with all details included (order items, total etc) and also in the dashboard section.
+                    I built a dashboard that staff could login (via Auth0) and see orders in real time (via SignalR updates once a new order is pushed). </br>Managers would also login
+                    to the dashboard to see daily, weekly and monthly summary about orders and update the menu items (which would be reflected immediately when QR code was scanned by clients).
+                    The NextJS app was containerized (via Docker) and the new image version was pushed to AWS ECR. After that ECS Service was triggered to deploy the new image to an EC2 instance (autoscale configured to scale out at max 3 instances on high traffic).
+                    All this process was automated through Github Workflows on main branch push as trigger. 
+                </p>
+            </div>
+        </section>
+</body>
