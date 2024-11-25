@@ -19,7 +19,9 @@ header {
 }
 
 header a {
-    color: steelblue
+    color: rgb(97, 180, 248);
+    font-size: 18px;
+    
 }
 
 .divider {
