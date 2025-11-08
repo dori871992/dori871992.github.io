@@ -14,278 +14,366 @@
         }
 
         :root {
-            --primary: #2563eb;
-            --primary-light: #3b82f6;
-            --secondary: #f97316;
-            --text-dark: #1e293b;
-            --text-gray: #64748b;
-            --bg-light: #f8fafc;
-            --bg-white: #ffffff;
-            --border: #e2e8f0;
-            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-            --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            --primary: #0ea5e9;
+            --primary-dark: #0284c7;
+            --accent: #f59e0b;
+            --accent-dark: #d97706;
+            --text-dark: #0f172a;
+            --text-medium: #334155;
+            --text-light: #64748b;
+            --bg-primary: #ffffff;
+            --bg-secondary: #f1f5f9;
+            --bg-accent: #fef3c7;
+            --border-light: #e2e8f0;
+            --gradient-start: #0ea5e9;
+            --gradient-end: #06b6d4;
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            line-height: 1.6;
-            color: var(--text-dark);
-            background: var(--bg-light);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.7;
+            color: var(--text-medium);
+            background: var(--bg-secondary);
+            overflow-x: hidden;
         }
 
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            padding: 1rem 0;
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-medium);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            font-size: 0.95rem;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        /* Hero Section */
         .hero {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
-            color: white;
-            padding: 4rem 2rem;
-            text-align: center;
+            margin-top: 70px;
+            background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
+            padding: 5rem 2rem 4rem;
             position: relative;
             overflow: hidden;
         }
 
-        .hero::before {
+        .hero::after {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
-            background: url('data:image/svg+xml,<svg width="60" height="60" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse"><path d="M 60 0 L 0 0 0 60" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="1"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grid)"/></svg>');
-            opacity: 0.3;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(255,255,255,0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(255,255,255,0.1) 0%, transparent 50%);
         }
 
-        .hero-content {
-            max-width: 1200px;
+        .hero-container {
+            max-width: 1400px;
             margin: 0 auto;
             position: relative;
             z-index: 1;
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: 3rem;
+            align-items: center;
         }
 
-        .avatar {
-            width: 160px;
-            height: 160px;
-            border-radius: 50%;
-            border: 5px solid white;
-            box-shadow: var(--shadow-lg);
-            margin: 0 auto 1.5rem;
+        .hero-avatar {
+            width: 200px;
+            height: 200px;
+            border-radius: 24px;
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
             object-fit: cover;
-            animation: fadeIn 0.6s ease-out;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .hero h1 {
-            font-size: 3rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-            animation: fadeIn 0.6s ease-out 0.1s backwards;
-        }
-
-        .hero h2 {
-            font-size: 1.5rem;
-            font-weight: 400;
-            opacity: 0.95;
-            margin-bottom: 1rem;
-            animation: fadeIn 0.6s ease-out 0.2s backwards;
-        }
-
-        .hero p {
-            font-size: 1.1rem;
-            opacity: 0.9;
-            max-width: 800px;
-            margin: 0 auto 2rem;
-            animation: fadeIn 0.6s ease-out 0.3s backwards;
-        }
-
-        .contact-info {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1.5rem;
-            justify-content: center;
-            margin-bottom: 2rem;
-            animation: fadeIn 0.6s ease-out 0.4s backwards;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-size: 0.95rem;
-        }
-
-        .contact-item a {
+        .hero-content {
             color: white;
-            text-decoration: none;
-            transition: opacity 0.3s;
         }
 
-        .contact-item a:hover {
-            opacity: 0.8;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            margin-bottom: 2rem;
-            animation: fadeIn 0.6s ease-out 0.5s backwards;
-        }
-
-        .social-link {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 50px;
-            height: 50px;
+        .hero-tag {
+            display: inline-block;
             background: rgba(255, 255, 255, 0.2);
-            border-radius: 12px;
-            transition: all 0.3s;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
             backdrop-filter: blur(10px);
         }
 
-        .social-link:hover {
-            background: rgba(255, 255, 255, 0.3);
-            transform: translateY(-3px);
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 0.75rem;
+            line-height: 1.1;
         }
 
-        .social-link img {
-            width: 28px;
-            height: 28px;
+        .hero h2 {
+            font-size: 1.75rem;
+            font-weight: 400;
+            opacity: 0.95;
+            margin-bottom: 1.5rem;
         }
 
-        .cta-buttons {
+        .hero-description {
+            font-size: 1.15rem;
+            opacity: 0.9;
+            line-height: 1.8;
+            max-width: 700px;
+            margin-bottom: 2rem;
+        }
+
+        .hero-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            font-size: 0.95rem;
+        }
+
+        .hero-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .hero-meta a {
+            color: white;
+            text-decoration: none;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+            transition: border-color 0.3s;
+        }
+
+        .hero-meta a:hover {
+            border-bottom-color: white;
+        }
+
+        .hero-actions {
             display: flex;
             gap: 1rem;
-            justify-content: center;
             flex-wrap: wrap;
-            animation: fadeIn 0.6s ease-out 0.6s backwards;
         }
 
         .btn {
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
-            padding: 0.875rem 1.75rem;
-            font-size: 1rem;
+            padding: 1rem 2rem;
+            border-radius: 12px;
             font-weight: 600;
-            border-radius: 50px;
             text-decoration: none;
             transition: all 0.3s;
-            cursor: pointer;
+            font-size: 1rem;
             border: none;
+            cursor: pointer;
         }
 
-        .btn-primary {
+        .btn-white {
             background: white;
             color: var(--primary);
-            box-shadow: var(--shadow);
         }
 
-        .btn-primary:hover {
+        .btn-white:hover {
             transform: translateY(-2px);
-            box-shadow: var(--shadow-lg);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
         }
 
-        .btn-secondary {
-            background: var(--secondary);
+        .btn-outline {
+            background: transparent;
             color: white;
+            border: 2px solid white;
         }
 
-        .btn-secondary:hover {
-            background: #ea580c;
-            transform: translateY(-2px);
+        .btn-outline:hover {
+            background: white;
+            color: var(--primary);
         }
 
+        .social-bar {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .social-btn {
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            transition: all 0.3s;
+        }
+
+        .social-btn:hover {
+            background: white;
+            transform: translateY(-3px);
+        }
+
+        .social-btn img {
+            width: 24px;
+            height: 24px;
+        }
+
+        /* Container */
         .container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
             padding: 0 2rem;
         }
 
+        /* Section */
         .section {
-            padding: 4rem 0;
-            background: var(--bg-white);
-            margin-bottom: 2rem;
+            padding: 5rem 0;
         }
 
-        .section:nth-child(even) {
-            background: var(--bg-light);
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-tag {
+            display: inline-block;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 1rem;
         }
 
         .section-title {
-            font-size: 2rem;
-            font-weight: 700;
+            font-size: 2.75rem;
+            font-weight: 800;
             color: var(--text-dark);
-            margin-bottom: 2rem;
-            position: relative;
-            padding-bottom: 1rem;
+            margin-bottom: 1rem;
         }
 
-        .section-title::after {
-            content: '';
-            position: absolute;
-            left: 0;
-            bottom: 0;
-            width: 60px;
-            height: 4px;
-            background: var(--primary);
-            border-radius: 2px;
+        .section-subtitle {
+            font-size: 1.25rem;
+            color: var(--text-light);
+            max-width: 700px;
+            margin: 0 auto;
         }
 
+        /* Why Me Section */
+        .why-box {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            padding: 3rem;
+            border-radius: 20px;
+            border-left: 6px solid var(--primary);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .why-box p {
+            font-size: 1.2rem;
+            line-height: 2;
+            color: var(--text-medium);
+        }
+
+        /* Skills Grid */
         .skills-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
         }
 
         .skill-card {
-            background: var(--bg-white);
-            padding: 1.5rem;
-            border-radius: 12px;
-            box-shadow: var(--shadow);
+            background: var(--bg-primary);
+            padding: 2rem;
+            border-radius: 16px;
+            border: 1px solid var(--border-light);
             transition: all 0.3s;
-            border-left: 4px solid var(--primary);
+            position: relative;
         }
 
-        .section:nth-child(even) .skill-card {
-            background: var(--bg-white);
+        .skill-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--primary);
+            border-radius: 16px 0 0 16px;
+            transform: scaleY(0);
+            transition: transform 0.3s;
         }
 
         .skill-card:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-lg);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            border-color: var(--primary);
         }
 
-        .skill-card h4 {
-            color: var(--primary);
-            font-size: 1.1rem;
-            margin-bottom: 0.5rem;
+        .skill-card:hover::before {
+            transform: scaleY(1);
+        }
+
+        .skill-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .skill-card h3 {
+            font-size: 1.25rem;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+            font-weight: 700;
         }
 
         .skill-card p {
-            color: var(--text-gray);
-            font-size: 0.95rem;
-        }
-
-        .why-me-box {
-            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
-            padding: 2.5rem;
-            border-radius: 16px;
-            border: 2px solid var(--primary-light);
-            box-shadow: var(--shadow);
-        }
-
-        .why-me-box p {
-            font-size: 1.1rem;
+            color: var(--text-light);
             line-height: 1.8;
-            color: var(--text-dark);
         }
 
+        /* Experience Timeline */
         .timeline {
             position: relative;
-            padding-left: 2rem;
+            padding-left: 3rem;
         }
 
         .timeline::before {
@@ -294,145 +382,259 @@
             left: 0;
             top: 0;
             bottom: 0;
-            width: 2px;
-            background: var(--border);
+            width: 3px;
+            background: linear-gradient(to bottom, var(--primary), var(--primary-dark));
         }
 
         .timeline-item {
             position: relative;
-            padding-bottom: 2.5rem;
+            padding-bottom: 3rem;
         }
 
-        .timeline-item::before {
-            content: '';
+        .timeline-dot {
             position: absolute;
-            left: -2.5rem;
+            left: -3.7rem;
             top: 0.5rem;
-            width: 12px;
-            height: 12px;
+            width: 20px;
+            height: 20px;
             border-radius: 50%;
             background: var(--primary);
-            border: 3px solid var(--bg-white);
+            border: 4px solid var(--bg-secondary);
+            box-shadow: 0 0 0 3px var(--primary);
         }
 
         .job-card {
-            background: var(--bg-white);
-            padding: 1.5rem;
-            border-radius: 12px;
-            box-shadow: var(--shadow);
+            background: var(--bg-primary);
+            padding: 2rem;
+            border-radius: 16px;
+            border: 1px solid var(--border-light);
             transition: all 0.3s;
         }
 
-        .section:nth-child(even) .job-card {
-            background: var(--bg-light);
-            border: 1px solid var(--border);
-        }
-
         .job-card:hover {
-            transform: translateX(8px);
-            box-shadow: var(--shadow-lg);
+            transform: translateX(10px);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            border-color: var(--primary);
         }
 
-        .job-card h4 {
+        .job-header {
+            margin-bottom: 1.5rem;
+        }
+
+        .job-title {
+            font-size: 1.5rem;
+            font-weight: 700;
             color: var(--text-dark);
-            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .job-company {
+            font-size: 1.1rem;
+            color: var(--primary);
+            font-weight: 600;
             margin-bottom: 0.5rem;
         }
 
         .job-meta {
-            color: var(--text-gray);
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
-            font-weight: 500;
+            color: var(--text-light);
+            font-size: 0.95rem;
         }
 
         .job-stack {
-            background: var(--bg-light);
-            padding: 0.75rem 1rem;
-            border-radius: 8px;
-            margin: 0.75rem 0;
-            font-size: 0.9rem;
-        }
-
-        .section:nth-child(even) .job-stack {
-            background: var(--bg-white);
+            background: var(--bg-secondary);
+            padding: 1rem 1.25rem;
+            border-radius: 12px;
+            margin: 1.5rem 0;
+            border-left: 3px solid var(--accent);
         }
 
         .job-stack strong {
-            color: var(--primary);
+            color: var(--accent-dark);
+            font-weight: 700;
         }
 
         .job-description {
-            color: var(--text-gray);
-            line-height: 1.7;
-            margin-top: 1rem;
+            color: var(--text-medium);
+            line-height: 1.9;
+            font-size: 1.05rem;
+        }
+
+        .job-description strong {
+            color: var(--text-dark);
+            font-weight: 600;
+        }
+
+        /* Projects */
+        .projects-grid {
+            display: grid;
+            gap: 2.5rem;
         }
 
         .project-card {
-            background: var(--bg-white);
-            padding: 2rem;
-            border-radius: 12px;
-            box-shadow: var(--shadow);
-            margin-bottom: 1.5rem;
+            background: var(--bg-primary);
+            padding: 2.5rem;
+            border-radius: 20px;
+            border: 1px solid var(--border-light);
             transition: all 0.3s;
-            border-top: 3px solid var(--secondary);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent), var(--accent-dark));
         }
 
         .project-card:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-lg);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.1);
+            border-color: var(--accent);
         }
 
-        .project-card h4 {
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .project-title {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            flex: 1;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .project-tag {
+            background: var(--bg-accent);
+            color: var(--accent-dark);
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .project-description {
+            color: var(--text-medium);
+            line-height: 1.9;
+            font-size: 1.05rem;
+        }
+
+        /* Education */
+        .education-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+        }
+
+        .education-card {
+            background: var(--bg-primary);
+            padding: 2rem;
+            border-radius: 16px;
+            border: 1px solid var(--border-light);
+            transition: all 0.3s;
+        }
+
+        .education-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            border-color: var(--primary);
+        }
+
+        .education-degree {
             font-size: 1.4rem;
+            font-weight: 700;
             color: var(--text-dark);
             margin-bottom: 0.5rem;
         }
 
-        .project-domain {
-            display: inline-block;
-            background: var(--secondary);
+        .education-school {
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            font-size: 1.05rem;
+        }
+
+        .education-meta {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--text-dark);
             color: white;
-            padding: 0.25rem 0.75rem;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            margin-bottom: 1rem;
-            font-weight: 500;
+            padding: 3rem 0;
+            text-align: center;
+        }
+
+        footer p {
+            opacity: 0.8;
+            font-size: 1.05rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 2rem;
+            }
+
+            .hero-avatar {
+                margin: 0 auto;
+            }
+
+            .hero-meta, .hero-actions, .social-bar {
+                justify-content: center;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
         }
 
         @media (max-width: 768px) {
+            .section-title {
+                font-size: 2rem;
+            }
+
             .hero h1 {
                 font-size: 2rem;
             }
 
             .hero h2 {
-                font-size: 1.2rem;
-            }
-
-            .contact-info {
-                flex-direction: column;
-                gap: 0.75rem;
-            }
-
-            .section {
-                padding: 3rem 0;
+                font-size: 1.25rem;
             }
 
             .timeline {
-                padding-left: 1.5rem;
+                padding-left: 2rem;
             }
-        }
 
-        footer {
-            background: var(--text-dark);
-            color: white;
-            text-align: center;
-            padding: 2rem;
-            margin-top: 2rem;
-        }
+            .timeline-dot {
+                left: -2.6rem;
+            }
 
-        footer p {
-            opacity: 0.8;
+            .education-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
     <script type="application/ld+json">
@@ -455,229 +657,387 @@
     </script>
 </head>
 <body>
-    <div class="hero">
-        <div class="hero-content">
-            <img src="photo.jpg" alt="Dorian Musaj" class="avatar">
-            <h1>Dorian Musaj</h1>
-            <h2>Senior Software Engineer</h2>
-            <p>11+ years building software that matters | Working with companies across 4 continents | Delivering scalable solutions from concept to production</p>
-            
-            <div class="contact-info">
-                <div class="contact-item">
-                    📍 Tirana, Albania
-                </div>
-                <div class="contact-item">
-                    📞 +355686284516
-                </div>
-                <div class="contact-item">
-                    ✉️ <a href="mailto:dorianmusaj@gmail.com">dorianmusaj@gmail.com</a>
-                </div>
-            </div>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-container">
+            <div class="nav-logo">DM</div>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#education">Education</a></li>
+            </ul>
+        </div>
+    </nav>
 
-            <div class="social-links">
-                <a href="https://www.linkedin.com/in/dorian-musaj-b41b15120" class="social-link" target="_blank" title="LinkedIn">
-                    <img src="linkedin.png" alt="LinkedIn">
-                </a>
-                <a href="https://github.com/dori871992" class="social-link" target="_blank" title="GitHub">
-                    <img src="github.png" alt="GitHub">
-                </a>
-                <a href="https://wa.me/355686284516?text=Hi Dorian! You are hired :D." class="social-link" target="_blank" title="WhatsApp">
-                    <img src="whatsapp.png" alt="WhatsApp">
-                </a>
-            </div>
-
-            <div class="cta-buttons">
-                <a href="https://github.com/dori871992/dori871992.github.io/raw/main/Dorian_Musaj_CV.pdf" download="Dorian_Musaj_CV.pdf" class="btn btn-primary">
-                    📄 Download CV
-                </a>
-                <a href="https://calendly.com/dorianmusaj/30min" class="btn btn-secondary">
-                    📅 Schedule a Call
-                </a>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-container">
+            <img src="photo.jpg" alt="Dorian Musaj" class="hero-avatar">
+            <div class="hero-content">
+                <div class="hero-tag">Available for opportunities</div>
+                <h1>Dorian Musaj</h1>
+                <h2>Senior Software Engineer</h2>
+                <p class="hero-description">
+                    11+ years of experience building scalable software solutions. Worked with companies across 4 continents, delivered dozens of projects ranging from enterprise platforms to consumer applications. Specialized in full-stack development, cloud architecture, and leading high-performing engineering teams.
+                </p>
+                <div class="hero-meta">
+                    <div class="hero-meta-item">📍 146/1, 'Mine Peza', Tirana, Albania</div>
+                    <div class="hero-meta-item">📞 +355686284516</div>
+                    <div class="hero-meta-item">✉️ <a href="mailto:dorianmusaj@gmail.com">dorianmusaj@gmail.com</a></div>
+                </div>
+                <div class="hero-actions">
+                    <a href="https://github.com/dori871992/dori871992.github.io/raw/main/Dorian_Musaj_CV.pdf" download="Dorian_Musaj_CV.pdf" class="btn btn-white">
+                        📄 Download CV
+                    </a>
+                    <a href="https://calendly.com/dorianmusaj/30min" class="btn btn-outline">
+                        📅 Schedule Call
+                    </a>
+                </div>
+                <div class="social-bar">
+                    <a href="https://www.linkedin.com/in/dorian-musaj-b41b15120" target="_blank" class="social-btn">
+                        <img src="linkedin.png" alt="LinkedIn">
+                    </a>
+                    <a href="https://github.com/dori871992" target="_blank" class="social-btn">
+                        <img src="github.png" alt="GitHub">
+                    </a>
+                    <a href="https://wa.me/355686284516?text=Hi Dorian! You are hired :D." target="_blank" class="social-btn">
+                        <img src="whatsapp.png" alt="WhatsApp">
+                    </a>
+                </div>
             </div>
         </div>
-    </div>
+    </section>
 
-    <div class="section">
+    <!-- Why Me Section -->
+    <section class="section" id="about" style="background: var(--bg-primary);">
         <div class="container">
-            <h3 class="section-title">Why Work With Me</h3>
-            <div class="why-me-box">
+            <div class="section-header">
+                <div class="section-tag">About Me</div>
+                <h2 class="section-title">Why Work With Me</h2>
+            </div>
+            <div class="why-box">
                 <p>
-                    Delivering professionalism is paramount to me. I consistently meet client expectations while adhering to project timelines. In software development, I prioritize clean code, scalability, testability, and optimal performance. My experience spans full-stack development, cloud architecture, and leading teams to build production-ready solutions that drive real business value.
+                    Delivering professionalism to clients is paramount to me, and I consistently meet their expectations while adhering to project time constraints. In the software development realm, I prioritize clean code, scalability, and ensuring my code is testable and performs at its best. With extensive experience across full-stack development, cloud architecture, and team leadership, I bring proven expertise in building production-ready solutions that drive real business value.
                 </p>
             </div>
         </div>
-    </div>
+    </section>
 
-    <div class="section">
+    <!-- Skills Section -->
+    <section class="section" id="skills">
         <div class="container">
-            <h3 class="section-title">Technical Skills</h3>
+            <div class="section-header">
+                <div class="section-tag">Expertise</div>
+                <h2 class="section-title">Technical Skills</h2>
+                <p class="section-subtitle">Comprehensive experience across modern development stacks and cloud platforms</p>
+            </div>
             <div class="skills-grid">
                 <div class="skill-card">
-                    <h4>💻 Programming Languages</h4>
-                    <p>JavaScript, TypeScript, Java, Kotlin, C#, PHP</p>
+                    <div class="skill-icon">💻</div>
+                    <h3>Programming Languages</h3>
+                    <p>Javascript, Typescript, Java, Kotlin, C#, Php - Strong foundation in multiple programming paradigms with expertise in both object-oriented and functional programming.</p>
                 </div>
                 <div class="skill-card">
-                    <h4>🔧 Backend Development</h4>
-                    <p>.NET & .NET Core, Spring, PHP, Node.js, Serverless Framework, AWS Services</p>
+                    <div class="skill-icon">⚙️</div>
+                    <h3>Backend Development</h3>
+                    <p>.Net & .Net Core, Spring, Php, Node.js, Serverless framework, AWS Services - Building robust, scalable backend systems with microservices architecture and serverless patterns.</p>
                 </div>
                 <div class="skill-card">
-                    <h4>🎨 Frontend & Mobile</h4>
-                    <p>React, Next.js, PWA, Svelte, React Native, Flutter, Xamarin, Ionic Cordova, Android Native</p>
+                    <div class="skill-icon">🎨</div>
+                    <h3>Frontend & Mobile Development</h3>
+                    <p>React, NextJS, PWA, MeteorJs, SvelteJs, React Native, Xamarin, Ionic Cordova, Flutter, Android Native - Creating responsive, performant user interfaces across web and mobile platforms.</p>
                 </div>
                 <div class="skill-card">
-                    <h4>☁️ Cloud Platforms</h4>
-                    <p>AWS, Azure, GCP (extensive knowledge on all platforms)</p>
+                    <div class="skill-icon">☁️</div>
+                    <h3>Cloud Platforms</h3>
+                    <p>AWS, Azure, GCP - Extensive knowledge across all major cloud platforms. Experienced in infrastructure as code, serverless architectures, and cloud-native application development.</p>
                 </div>
                 <div class="skill-card">
-                    <h4>🏗️ Architecture & Patterns</h4>
-                    <p>MVVM, MVP, CQRS, DDD, Clean Architecture, Repository Pattern, SOLID, Microservices</p>
+                    <div class="skill-icon">🏗️</div>
+                    <h3>Design & Software Patterns</h3>
+                    <p>MVVM, MVP, CQRS, DDD, Clean architecture, Repository pattern, SOLID - Deep understanding of architectural patterns and design principles for building maintainable, scalable systems.</p>
                 </div>
                 <div class="skill-card">
-                    <h4>🛠️ DevOps & Tools</h4>
-                    <p>Docker, Terraform, GraphQL, Prisma, CI/CD, Fastlane, Jenkins, Git, Jira</p>
+                    <div class="skill-icon">🔧</div>
+                    <h3>DevOps & Tools</h3>
+                    <p>Docker, Terraform, GraphQL, Prisma, CircleCI, Azure pipelines, Fastlane, Jenkins, Git, Jira, Github, Azure Devops, Trello, Bitbucket, Gitlab, TFS, Gitea - Comprehensive toolset for modern software development and deployment.</p>
                 </div>
             </div>
+            <p style="text-align: center; margin-top: 2rem; color: var(--text-light); font-style: italic;">
+                *Worked with many additional tools and technologies - feel free to ask for further details.
+            </p>
         </div>
-    </div>
+    </section>
 
-    <div class="section">
+    <!-- Experience Section -->
+    <section class="section" id="experience" style="background: var(--bg-primary);">
         <div class="container">
-            <h3 class="section-title">Professional Experience</h3>
+            <div class="section-header">
+                <div class="section-tag">Career Journey</div>
+                <h2 class="section-title">Professional Experience</h2>
+                <p class="section-subtitle">11+ years of delivering exceptional software solutions across diverse industries and technologies</p>
+            </div>
             <div class="timeline">
                 <div class="timeline-item">
+                    <div class="timeline-dot"></div>
                     <div class="job-card">
-                        <h4>Senior Full Stack Software Engineer</h4>
-                        <p class="job-meta">Dev.Pro • January 2025 - Present • Remote (Augsburg, Germany)</p>
-                        <div class="job-stack"><strong>Stack:</strong> React, Next.js, Laravel, PHP, Kotlin, Aurora DB</div>
-                        <p class="job-description">Maintaining and building features in the web application with focus on scalability and performance.</p>
+                        <div class="job-header">
+                            <h3 class="job-title">Senior Full Stack Software Engineer</h3>
+                            <div class="job-company">Dev.Pro</div>
+                            <p class="job-meta">January 2025 - Present • Remote (Augsburg, Germany)</p>
+                        </div>
+                        <div class="job-stack">
+                            <strong>Stack & Tools:</strong> React, NextJs, Laravel, Php, Kotlin, Aurora Db
+                        </div>
+                        <p class="job-description">
+                            <strong>Responsibilities:</strong> Maintain and build features in the web application, focusing on performance optimization and user experience improvements. Working with modern frontend and backend technologies to deliver scalable solutions.
+                        </p>
                     </div>
                 </div>
 
                 <div class="timeline-item">
+                    <div class="timeline-dot"></div>
                     <div class="job-card">
-                        <h4>Senior Full Stack Software Engineer</h4>
-                        <p class="job-meta">Modus Create • February 2023 - November 2024 • Remote (Georgia, USA)</p>
-                        <div class="job-stack"><strong>Stack:</strong> React, MUI, .NET Core, PostgreSQL, Cosmos DB, Azure, Terraform, Azure Logic Apps</div>
-                        <p class="job-description">Led development of platform version 2.0, implementing microservices architecture and migrating legacy infrastructure. Built optimized React applications with comprehensive testing coverage.</p>
+                        <div class="job-header">
+                            <h3 class="job-title">Senior Full Stack Software Engineer</h3>
+                            <div class="job-company">Modus Create</div>
+                            <p class="job-meta">February 2023 - November 2024 • Remote (Georgia, USA)</p>
+                        </div>
+                        <div class="job-stack">
+                            <strong>Stack & Tools:</strong> React, MUI, .Net Core, Postgresql, Cosmos DB, Azure, Terraform, Azure Logic Apps
+                        </div>
+                        <p class="job-description">
+                            <strong>Responsibilities:</strong> Spearheaded the development of version 2.0 of the legacy platform, implementing full-stack solutions with a strong emphasis on microservices architecture. Led the migration of existing infrastructure to a modern microservices approach, optimizing backend services for scalability and performance. Built comprehensive React applications with focus on maintainability and user experience. Collaborated with cross-functional teams to deliver high-quality, production-ready features on schedule.
+                        </p>
                     </div>
                 </div>
 
                 <div class="timeline-item">
+                    <div class="timeline-dot"></div>
                     <div class="job-card">
-                        <h4>Senior Full Stack Software Engineer (Team Lead)</h4>
-                        <p class="job-meta">Orderin • January 2021 - February 2023 • Remote (Cape Town, South Africa)</p>
-                        <div class="job-stack"><strong>Stack:</strong> React, Next.js, MUI, .NET Core, PostgreSQL, MongoDB, AWS, Serverless, GraphQL, DDD, CQRS</div>
-                        <p class="job-description">Led Consumer Platform team building delivery solutions for McDonald's South Africa and enterprise SaaS platform. Implemented DDD and CQRS patterns with microservices using AWS SQS/SNS for service communication. Integrated PagerDuty for real-time monitoring of high-traffic systems.</p>
+                        <div class="job-header">
+                            <h3 class="job-title">Senior Full Stack Software Engineer (Team Lead)</h3>
+                            <div class="job-company">Orderin</div>
+                            <p class="job-meta">January 2021 - February 2023 • Remote (Cape Town, South Africa)</p>
+                        </div>
+                        <div class="job-stack">
+                            <strong>Stack & Tools:</strong> React, NextJS, MUI, .Net Core, Postgresql, MongoDB, AWS, Serverless (Lambdas JS), GraphQL, DDD, CQRS Microservices
+                        </div>
+                        <p class="job-description">
+                            <strong>Responsibilities:</strong> Led the Consumer Platform team in creating and enhancing customer-facing products. Primarily worked on the delivery platform for McDonald's South Africa, developing new features and implementing performance enhancements to ensure quick and seamless ordering experiences for customers.<br><br>
+                            Contributed to building a comprehensive SaaS delivery platform designed to empower small, medium, and large businesses with efficient delivery capabilities. Provided these businesses with robust tools to manage and scale their delivery services effectively.<br><br>
+                            Collaborated with well-known South African brands to develop custom solutions tailored to their unique requirements, significantly enhancing their digital presence and improving customer experience. Applied Domain-Driven Design (DDD) and CQRS patterns throughout the architecture.
+                        </p>
                     </div>
                 </div>
 
                 <div class="timeline-item">
+                    <div class="timeline-dot"></div>
                     <div class="job-card">
-                        <h4>Senior Full Stack Engineer (React Native)</h4>
-                        <p class="job-meta">Social Media Emotions • January 2020 - June 2021 • Remote (Vincenza, Italy)</p>
-                        <div class="job-stack"><strong>Stack:</strong> React, React Native, DynamoDB, AWS AppSync, Lambda, CloudFormation, GraphQL, CircleCI, Fastlane</div>
-                        <p class="job-description">Built serverless social media platform for digital artists including mobile apps (iOS/Android), web applications, and admin dashboard. Implemented automated CI/CD pipelines with Fastlane and CircleCI.</p>
+                        <div class="job-header">
+                            <h3 class="job-title">Senior Full Stack Engineer (React-Native)</h3>
+                            <div class="job-company">Social Media Emotions</div>
+                            <p class="job-meta">January 2020 - June 2021 • Remote (Vincenza, Italy)</p>
+                        </div>
+                        <div class="job-stack">
+                            <strong>Stack & Tools:</strong> React, React Native, NativeBase, DynamoDB, AWS Appsync, Lambda, Cloudformation, GraphQL, Github, Docker, Sentry, FastLane, CircleCI, OneSignal, Cognito
+                        </div>
+                        <p class="job-description">
+                            <strong>Responsibilities:</strong> Worked as senior-level software engineer and consultant for a social media platform targeting digital artists. Developed complete ecosystem including mobile applications (Android and iOS), end-consumer web application, and admin dashboard. Implemented serverless-oriented architecture with backend services written as AWS Lambdas (Node runtime). Configured automated CI/CD pipelines using CircleCI and Fastlane for seamless deployments. Integrated real-time features using AWS AppSync and GraphQL for efficient data synchronization across platforms.
+                        </p>
                     </div>
                 </div>
 
                 <div class="timeline-item">
+                    <div class="timeline-dot"></div>
                     <div class="job-card">
-                        <h4>Lead Developer (Mobile & React)</h4>
-                        <p class="job-meta">AT Consulting • January 2019 - February 2020 • Tirana, Albania</p>
-                        <div class="job-stack"><strong>Stack:</strong> Java, Kotlin, JavaScript, PHP, MySQL, Ionic Cordova, Android Native, React Native, React</div>
-                        <p class="job-description">Led mobile app development across multiple platforms and frameworks, managing several projects simultaneously while maintaining code quality and meeting deadlines.</p>
+                        <div class="job-header">
+                            <h3 class="job-title">Lead Developer (Mobile App & React)</h3>
+                            <div class="job-company">AT Consulting</div>
+                            <p class="job-meta">January 2019 - February 2020 • Tirana, Albania</p>
+                        </div>
+                        <div class="job-stack">
+                            <strong>Stack & Tools:</strong> Java, Kotlin, Javascript, Php, MySql, Ionic Cordova, PGP encryption, Android native development, React Native, React, coreBos CRM, Firebase, Google Play services, Docker, Bitbucket CI, Xampp, MySQL, DroneCI, React-Admin, Material UI, Gitlab, Gitea
+                        </div>
+                        <p class="job-description">
+                            <strong>Responsibilities:</strong> Led mobile app development initiatives, focusing on Android native development while also maintaining and fixing issues in mobile hybrid applications and React projects. Successfully managed multiple concurrent projects, balancing development and maintenance tasks. Implemented secure features including PGP encryption for sensitive data handling. Worked extensively with various CI/CD tools and version control systems to streamline development workflows.
+                        </p>
                     </div>
                 </div>
 
                 <div class="timeline-item">
+                    <div class="timeline-dot"></div>
                     <div class="job-card">
-                        <h4>Lead Mobile App Developer (Team Lead)</h4>
-                        <p class="job-meta">3i Solutions • October 2016 - June 2019 • Tirana, Albania</p>
-                        <div class="job-stack"><strong>Stack:</strong> C#, Java, Kotlin, JavaScript, SQL Server, PostgreSQL, MongoDB, Xamarin, React Native, Android Native</div>
-                        <p class="job-description">Built e-learning mobile applications for online school platform using Xamarin and Android native development. Implemented CI/CD pipelines with Azure DevOps.</p>
+                        <div class="job-header">
+                            <h3 class="job-title">Lead Mobile App Developer (Team Lead)</h3>
+                            <div class="job-company">3i Solutions</div>
+                            <p class="job-meta">October 2016 - June 2019 • Tirana, Albania</p>
+                        </div>
+                        <div class="job-stack">
+                            <strong>Stack & Tools:</strong> C#, Java, Kotlin, Javascript, SQL Server, PostgreSQL, MongoDB, React-Native, Xamarin, Xamarin Forms, Web Api, Spring, OAuth 2, Android native, RXJava, Retrofit, Volley, Azure DevOps CI-CD pipelines
+                        </div>
+                        <p class="job-description">
+                            <strong>Responsibilities:</strong> Led development of Android mobile applications for an online school platform, serving as the primary architect for the e-learning mobile solution. Built cross-platform applications using Xamarin framework (C#) and native Android development (Java/Kotlin). Developed robust backend services using .NET framework to support mobile applications. Implemented CI/CD pipelines using Azure DevOps to automate build, test, and deployment processes. Mentored team members and established best practices for mobile development within the organization.
+                        </p>
                     </div>
                 </div>
 
                 <div class="timeline-item">
+                    <div class="timeline-dot"></div>
                     <div class="job-card">
-                        <h4>Android App Developer</h4>
-                        <p class="job-meta">Software House Albania • May 2013 - June 2016 • Tirana, Albania</p>
-                        <div class="job-stack"><strong>Stack:</strong> Java, PHP, MySQL, Android Native, Google Maps SDK, VOIP</div>
-                        <p class="job-description">Started career developing Android apps with VOIP capabilities and geolocation tracking. Built strong foundation in mobile development and software engineering principles.</p>
+                        <div class="job-header">
+                            <h3 class="job-title">Android App Developer</h3>
+                            <div class="job-company">Software House Albania (SohoAL)</div>
+                            <p class="job-meta">May 2013 - June 2016 • Tirana, Albania</p>
+                        </div>
+                        <div class="job-stack">
+                            <strong>Stack & Tools:</strong> Java, Php, MySQL, Android native, Eclipse, Manual testing, Tortoise SVN, Google Maps SDK, VOIP, Phonegap
+                        </div>
+                        <p class="job-description">
+                            <strong>Responsibilities:</strong> Started career in software engineering focusing on Android app development. Built applications with advanced features including VOIP capabilities for voice communication and geolocation tracking using Google Maps SDK. Despite Android platform limitations at that time, gained valuable experience and built strong foundation in mobile development. Worked with various technologies including Phonegap for hybrid app development, learning core principles of software engineering and best practices.
+                        </p>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 
-    <div class="section">
+    <!-- Projects Section -->
+    <section class="section" id="projects">
         <div class="container">
-            <h3 class="section-title">Featured Projects</h3>
-            
-            <div class="project-card">
-                <h4>Revenue Cycle Management Platform</h4>
-                <span class="project-domain">RCM • Healthcare • Finance</span>
-                <p class="job-description">
-                    Full-stack development of revenue cycle management platform for healthcare providers. Implemented frontend with React, MUI, Vite, and Zustand, while building microservices backend with .NET Core, Azure Functions, and Logic Apps. Applied CQRS pattern across services with comprehensive unit testing using Jest, XUnit, and Moq.
-                </p>
+            <div class="section-header">
+                <div class="section-tag">Portfolio</div>
+                <h2 class="section-title">Notable Projects</h2>
+                <p class="section-subtitle">A selection of impactful projects showcasing technical expertise and business value delivery</p>
             </div>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3 class="project-title">Revenue Cycle Management Platform</h3>
+                        <div class="project-tags">
+                            <span class="project-tag">RCM</span>
+                            <span class="project-tag">Healthcare</span>
+                            <span class="project-tag">Finance</span>
+                        </div>
+                    </div>
+                    <p class="project-description">
+                        Comprehensive revenue cycle management platform focused on bill tracking and payment processing for healthcare providers. Worked as full-stack developer implementing features across both frontend and backend.<br><br>
+                        <strong>Frontend:</strong> Built with React, Material UI (MUI), Vite for optimal build performance, Zustand for state management, Azure SAML for authentication, and Jest for comprehensive testing.<br><br>
+                        <strong>Backend:</strong> Developed microservices using .NET Core, Azure Functions for serverless computing, Logic Apps for workflow automation, SQL Server for relational data, Cosmos DB for NoSQL requirements, Azure Pipelines for CI/CD, and XUnit with Moq for unit testing. All backend services implemented following CQRS pattern for clear separation of read and write operations.
+                    </p>
+                </div>
 
-            <div class="project-card">
-                <h4>Delivery SaaS Platform</h4>
-                <span class="project-domain">Logistics • SaaS • Courier</span>
-                <p class="job-description">
-                    Built enterprise delivery platform serving high traffic with pure microservices architecture. Implemented DDD and CQRS patterns using .NET Core, with Amazon SQS/SNS for inter-service communication. Frontend built with React and Redux Saga, maintaining 80% test coverage. Integrated Intent Architect for rapid microservice scaffolding and PagerDuty for real-time monitoring.
-                </p>
-            </div>
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3 class="project-title">Delivery SaaS Platform</h3>
+                        <div class="project-tags">
+                            <span class="project-tag">Logistics</span>
+                            <span class="project-tag">SaaS</span>
+                            <span class="project-tag">Courier</span>
+                            <span class="project-tag">Shipping</span>
+                        </div>
+                    </div>
+                    <p class="project-description">
+                        Enterprise-grade delivery platform designed to handle significant traffic and serve major clients. Worked as full-stack developer building new features and enhancing existing functionality.<br><br>
+                        <strong>Frontend Development:</strong> Built with React using Redux Saga for complex side effect management, Auth0 for authentication, Formik for form handling, Jest and React Testing Library for testing, and Suspense for improved loading states. All implementations accompanied by comprehensive tests with 80% coverage goal (unit and UI tests).<br><br>
+                        <strong>Backend Architecture:</strong> Pure microservices infrastructure with each .NET Core service following single responsibility principle. Strongly adhered to Domain Driven Design principles including Domain Events and Bounded Context, implementing CQRS pattern throughout.<br><br>
+                        <strong>Inter-Service Communication:</strong> Utilized integration events with Amazon SQS (Simple Queue Service) and SNS (Simple Notification Service) for reliable asynchronous communication between services.<br><br>
+                        <strong>Development Acceleration:</strong> Integrated Intent Architect tool to create microservice templates, enabling rapid spinning up of new services. Integrated PagerDuty for real-time alerts when services experienced downtime, ensuring high availability for this high-traffic platform.
+                    </p>
+                </div>
 
-            <div class="project-card">
-                <h4>Live Delivery Tracking SaaS</h4>
-                <span class="project-domain">Logistics • Real-time Tracking</span>
-                <p class="job-description">
-                    Developed real-time delivery tracking system with Next.js frontend and .NET Core backend. Implemented live location updates every 5 seconds using MongoDB for NoSQL data storage. Integrated GraphQL via HotChocolate framework with Material UI for responsive interface.
-                </p>
-            </div>
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3 class="project-title">Delivery Tracking SaaS</h3>
+                        <div class="project-tags">
+                            <span class="project-tag">Logistics</span>
+                            <span class="project-tag">SaaS</span>
+                            <span class="project-tag">Live Tracking</span>
+                        </div>
+                    </div>
+                    <p class="project-description">
+                        Real-time delivery tracking system allowing customers to monitor their deliveries with live driver location updates. When users place orders, they receive a tracking link that displays the driver's real-time location on a map, updating every 5 seconds.<br><br>
+                        Completed full-stack development with Next.js for the frontend, leveraging server-side rendering for optimal performance and SEO. Backend built with .NET Core microservices architecture. Implemented MongoDB as NoSQL database for handling real-time location updates efficiently. All UI components implemented using Material UI with custom SCSS for unique styling requirements. Introduced GraphQL via HotChocolate framework in backend services for flexible and efficient data querying.
+                    </p>
+                </div>
 
-            <div class="project-card">
-                <h4>Social Media Platform for Digital Artists</h4>
-                <span class="project-domain">Social Media • E-commerce</span>
-                <p class="job-description">
-                    Complete serverless platform for digital artists with React Native mobile apps, React admin dashboard, and AWS Lambda backend. Implemented end-to-end encryption using CryptoJS, automated deployments with Fastlane and CircleCI, and GraphQL data layer with AWS AppSync. Managed infrastructure with CloudFormation templates and AWS Cognito for authentication.
-                </p>
-            </div>
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3 class="project-title">Social Media Platform for Digital Artists</h3>
+                        <div class="project-tags">
+                            <span class="project-tag">Social Media</span>
+                            <span class="project-tag">Digital Art</span>
+                            <span class="project-tag">E-commerce</span>
+                            <span class="project-tag">Chat</span>
+                        </div>
+                    </div>
+                    <p class="project-description">
+                        Comprehensive social media platform targeting digital artists, enabling them to upload and sell their creations through an integrated marketplace. Worked as full-stack developer for this startup, handling multiple responsibilities across the entire stack.<br><br>
+                        <strong>Mobile Development:</strong> Heavily focused on building Android and iOS applications using React Native. Configured automated deployment workflows using Fastlane in combination with CircleCI for continuous delivery. Set up workflows to automatically fetch iOS certificates from Apple Developer Portal, sign applications, and deploy to App Store. Android deployment process streamlined with automated builds and Play Store publishing.<br><br>
+                        <strong>Web Dashboard:</strong> Built React admin dashboard where artists could login, manage their digital creations, and add new items to their portfolio. Implemented comprehensive content management features.<br><br>
+                        <strong>Backend Architecture:</strong> Complete serverless infrastructure using AWS Lambda functions for all backend logic. Mobile apps integrated with AWS AppSync for real-time data synchronization, with all data manipulation performed through GraphQL queries and mutations.<br><br>
+                        <strong>Security Features:</strong> Implemented end-to-end encryption using CryptoJS library to ensure secure communication and data protection for sensitive artist content.<br><br>
+                        <strong>Infrastructure Management:</strong> Backend updates deployed through CloudFormation templates which automatically provisioned and updated Lambda functions. User authentication and management handled through AWS Cognito, providing secure and scalable identity services.
+                    </p>
+                </div>
 
-            <div class="project-card">
-                <h4>Digital Menu SaaS</h4>
-                <span class="project-domain">Hospitality • QR Technology</span>
-                <p class="job-description">
-                    Designed and built from scratch using Figma, implemented with Next.js, MUI, and Auth0 frontend, .NET Core backend. Created unique QR code system for beach umbrellas enabling direct ordering. Integrated WhatsApp Cloud API for order notifications, SignalR for real-time dashboard updates. Containerized with Docker, deployed to AWS ECS with automated CI/CD via GitHub Workflows. Configured auto-scaling for high traffic handling.
-                </p>
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3 class="project-title">Digital Menu SaaS</h3>
+                        <div class="project-tags">
+                            <span class="project-tag">Hospitality</span>
+                            <span class="project-tag">Menu</span>
+                            <span class="project-tag">QR Technology</span>
+                        </div>
+                    </div>
+                    <p class="project-description">
+                        Comprehensive digital menu platform built from scratch for beach resorts and hospitality businesses. Platform provides businesses with ability to display digital menus at beach umbrellas and sunbeds through unique QR codes.<br><br>
+                        <strong>Design & Frontend:</strong> Designed complete user interface using Figma and Canvas. Built frontend application with Next.js, Material UI for component library, and Auth0 for authentication. Each QR code is unique to specific umbrella numbers, enabling customers to order directly from their location without calling staff.<br><br>
+                        <strong>Backend Development:</strong> Built robust backend using .NET Core to handle all business logic, order processing, and real-time updates.<br><br>
+                        <strong>Order Management:</strong> Orders are delivered through two channels: formatted WhatsApp messages (using integrated WhatsApp Cloud API) with complete order details (items, totals, location), and real-time dashboard notifications. Built comprehensive dashboard where staff can login via Auth0 to view orders in real-time using SignalR for instant updates when new orders are placed.<br><br>
+                        <strong>Management Portal:</strong> Managers access dashboard to view daily, weekly, and monthly order summaries and analytics. Can update menu items which immediately reflect when customers scan QR codes, providing dynamic menu management.<br><br>
+                        <strong>Deployment & Infrastructure:</strong> Next.js application containerized using Docker. New image versions pushed to AWS ECR (Elastic Container Registry). ECS Service configured to automatically deploy new images to EC2 instances. Auto-scaling configured to scale out to maximum of 3 instances during high traffic periods. Entire deployment process automated through GitHub Workflows, triggered on main branch pushes for continuous delivery.
+                    </p>
+                </div>
             </div>
         </div>
-    </div>
+    </section>
 
-    <div class="section">
+    <!-- Education Section -->
+    <section class="section" id="education" style="background: var(--bg-primary);">
         <div class="container">
-            <h3 class="section-title">Education</h3>
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="job-card">
-                        <h4>Master's Degree in Business Informatics</h4>
-                        <p class="job-meta">Faculty of Natural Sciences • November 2015 - February 2017 • Tirana, Albania</p>
-                    </div>
+            <div class="section-header">
+                <div class="section-tag">Academic Background</div>
+                <h2 class="section-title">Education</h2>
+            </div>
+            <div class="education-grid">
+                <div class="education-card">
+                    <h3 class="education-degree">Master's Degree in Business Informatics</h3>
+                    <div class="education-school">Faculty of Natural Sciences</div>
+                    <p class="education-meta">November 2015 - February 2017 • Tirana, Albania</p>
+                    <p style="margin-top: 1rem; color: var(--text-medium);">
+                        Completed 1.5 years of advanced studying in Business Informatics, focusing on the intersection of business processes and information technology systems.
+                    </p>
                 </div>
-                <div class="timeline-item">
-                    <div class="job-card">
-                        <h4>Bachelor's Degree in Informatics</h4>
-                        <p class="job-meta">Faculty of Natural Sciences • November 2010 - September 2015 • Tirana, Albania</p>
-                    </div>
+                <div class="education-card">
+                    <h3 class="education-degree">Bachelor's Degree in Informatics</h3>
+                    <div class="education-school">Faculty of Natural Sciences</div>
+                    <p class="education-meta">November 2010 - September 2015 • Tirana, Albania</p>
+                    <p style="margin-top: 1rem; color: var(--text-medium);">
+                        Completed comprehensive 3-year program in Informatics with foundational knowledge in computer science, programming, and software development. Some delays occurred due to personal reasons during the study period.
+                    </p>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 
+    <!-- Footer -->
     <footer>
-        <p>&copy; 2025 Dorian Musaj. Building software, creating impact.</p>
+        <div class="container">
+            <p>&copy; 2025 Dorian Musaj. Building software, creating impact.</p>
+        </div>
     </footer>
 </body>
 </html>
